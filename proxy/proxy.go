@@ -146,12 +146,11 @@ func handleRequests(writer http.ResponseWriter, req *http.Request) {
 func main() {
 
 	db.CreateDataBaseConnection("docker", "docker", "localhost", "docker", 20)
-	//db.CreateDataBaseConnection("alexis", "sinope27", "localhost", "proxy", 20)
 	db.InitDataBase()
 
 	server := &http.Server{
 		Handler:      http.HandlerFunc(handleRequests),
-		Addr:         ":5000",
+		Addr:         ":8080",
 		TLSNextProto: make(map[string]func(*http.Server, *tls.Conn, http.Handler)),
 	}
 	rootCertificate = certificate.GetRootCertificate()
