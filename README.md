@@ -10,7 +10,9 @@ Command injection -
 Добавить сертификат rootCert.cert
 
 git clone git@github.com:AzisHop/proxyYar.git
+
 sudo docker build . -t yaro
+
 sudo docker run -p 8080:8080 -p 8081:8081 --name yaro -t yaro
 
 ## Функциональность repeater
