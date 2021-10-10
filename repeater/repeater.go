@@ -2,21 +2,18 @@ package main
 
 import (
 	"github.com/gorilla/mux"
-	"github.com/saskamegaprogrammist/proxyServer/db"
-	"github.com/saskamegaprogrammist/proxyServer/handlers"
 	"log"
 	"net/http"
+	"proxyYar/db"
+	"proxyYar/handlers"
 )
 
 func main() {
 	db.CreateDataBaseConnection("docker", "docker", "localhost", "docker", 20)
-	//db.CreateDataBaseConnection("alexis", "sinope27", "localhost", "proxy", 20)
 	r := mux.NewRouter()
 	handlers.RepeaterClient = &http.Client{}
+	r.HandleFunc("/request/{id}", handlers.MakeRequest).Methods("GET")
 	r.HandleFunc("/requests", handlers.GetLastRequests).Methods("GET")
-	r.HandleFunc("/requests/{id}", handlers.MakeRequest).Methods("GET")
-	
-
 
 	err := http.ListenAndServe(":8081", r)
 	if err != nil {

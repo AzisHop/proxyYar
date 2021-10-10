@@ -3,10 +3,10 @@ package handlers
 import (
 	"fmt"
 	"github.com/gorilla/mux"
-	"github.com/saskamegaprogrammist/proxyServer/requests"
-	"github.com/saskamegaprogrammist/proxyServer/utils"
 	"io"
 	"net/http"
+	"proxyYar/requests"
+	"proxyYar/utils"
 	"strconv"
 	"strings"
 )

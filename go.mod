@@ -1,4 +1,4 @@
-module github.com/saskamegaprogrammist/proxyServer
+module proxyYar
 
 go 1.13
 

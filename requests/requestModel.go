@@ -2,8 +2,8 @@ package requests
 
 import (
 	"fmt"
-	"github.com/saskamegaprogrammist/proxyServer/db"
 	"log"
+	"proxyYar/db"
 	"strings"
 )
 
@@ -51,7 +51,7 @@ func (reqModel*Request) GetRequests() ([]Request, error) {
 	requestsFound := make([]Request, 0)
 	dataBase := db.GetDataBase()
 	transaction, _ := dataBase.Begin()
-	rows, err := transaction.Query("SELECT id, method, urlhost, urlscheme, headers, body, contentlength, host, remoteaddr, requesturi FROM requests ORDER BY id DESC LIMIT 10;")
+	rows, err := transaction.Query("SELECT id, method, urlhost, urlscheme, headers, body, contentlength, host, remoteaddr, requesturi FROM requests ORDER BY id DESC;")
 	if err != nil {
 		log.Println(err)
 		err = transaction.Rollback()
